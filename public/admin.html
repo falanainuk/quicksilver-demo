@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0b5138">
+  <title>Admin | Quicksilver Journeys</title>
+  <link rel="stylesheet" href="/admin.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body>
+  <header class="admin-header">
+    <div class="admin-wrap header-inner">
+      <a class="admin-brand" href="/" aria-label="Quicksilver Journeys website"><span class="brand-mark">Q</span><span>Quicksilver Journeys<small>Website administration</small></span></a>
+      <button id="logout-button" class="button button-secondary" type="button" hidden>Sign out</button>
+    </div>
+  </header>
+  <main class="admin-wrap">
+    <div id="global-message" class="notice" role="status" hidden></div>
+    <section id="login-section" class="panel login-panel">
+      <p class="eyebrow">Private administration</p>
+      <h1>Admin sign in</h1>
+      <p>Sign in to manage website content and customer enquiries.</p>
+      <form id="login-form" class="form-grid">
+        <label>Username<input name="username" autocomplete="username" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="button" type="submit">Sign in securely</button>
+      </form>
+    </section>
+
+    <div id="admin-app" hidden>
+      <div class="page-heading">
+        <div><p class="eyebrow">Control centre</p><h1>Website &amp; enquiries</h1><p>Update public details, services and your CRM from one place.</p></div>
+      </div>
+
+      <section class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Business profile</p><h2>Website details &amp; theme</h2></div></div>
+        <form id="settings-form" class="form-grid two-col">
+          <label>Business name<input name="businessName" maxlength="100" required></label>
+          <label>Tagline<input name="tagline" maxlength="160"></label>
+          <label class="full">Business address<textarea name="address" maxlength="400" required rows="2"></textarea></label>
+          <label>Phone number<input name="phone" maxlength="30" required></label>
+          <label>Contact / enquiry email<input name="email" type="email" maxlength="254" required></label>
+          <label>Introduction heading<input name="heroEyebrow" maxlength="100"></label>
+          <label class="full">Introduction text<textarea name="heroCopy" maxlength="500" rows="3"></textarea></label>
+          <label class="full">About the business<textarea name="aboutCopy" maxlength="800" rows="3" required></textarea></label>
+          <fieldset class="full logo-field">
+            <legend>Logo</legend>
+            <label>Upload PNG, JPG or WebP (maximum 3 MB)<input id="logo-file" type="file" accept="image/png,image/jpeg,image/webp"></label>
+            <button class="button button-secondary" id="upload-logo" type="button">Upload logo</button>
+            <label>Or use an HTTPS logo image URL<input name="logoUrl" maxlength="500" placeholder="https://example.com/logo.png"></label>
+          </fieldset>
+          <fieldset class="full color-field">
+            <legend>Website theme colours</legend>
+            <label>Primary <input name="green" type="color"></label>
+            <label>Primary accent <input name="greenLight" type="color"></label>
+            <label>Highlight <input name="saffron" type="color"></label>
+            <label>Soft background <input name="cream" type="color"></label>
+          </fieldset>
+          <button class="button" type="submit">Save website details</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Public content</p><h2>Destinations &amp; services</h2><p>Add, edit, hide or remove the cards shown on your website.</p></div></div>
+        <form id="catalogue-form" class="form-grid two-col">
+          <input name="id" type="hidden">
+          <label>Content type<select name="kind" required><option value="service">Service</option><option value="destination">Destination</option></select></label>
+          <label>Title<input name="title" maxlength="100" required></label>
+          <label>Subtitle<input name="subtitle" maxlength="160"></label>
+          <label>Sort order<input name="displayOrder" type="number" min="0" max="10000" value="0"></label>
+          <label class="full">Description<textarea name="description" maxlength="600" required rows="3"></textarea></label>
+          <label class="full">Image URL (HTTPS)<input name="imageUrl" maxlength="500" placeholder="https://example.com/image.jpg"></label>
+          <label class="check-label"><input name="active" type="checkbox" checked> Show on website</label>
+          <div class="button-row full"><button class="button" type="submit">Save card</button><button class="button button-secondary" id="reset-catalogue" type="button">Clear</button></div>
+        </form>
+        <div id="catalogue-list" class="catalogue-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading crm-heading"><div><p class="eyebrow">Customer relationship management</p><h2>Website enquiries</h2><p>Review requests, track follow-up and retry email notifications.</p></div>
+          <label class="filter-label">Filter by status<select id="status-filter"><option value="">All enquiries</option></select></label>
+        </div>
+        <div id="enquiry-list" class="enquiry-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-heading"><div><p class="eyebrow">Account security</p><h2>Change admin password</h2></div></div>
+        <form id="password-form" class="form-grid two-col">
+          <label>Current password<input name="oldPassword" type="password" autocomplete="current-password" required></label>
+          <label>New password (12 characters minimum)<input name="newPassword" type="password" minlength="12" maxlength="72" autocomplete="new-password" required></label>
+          <button class="button" type="submit">Update password</button>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer class="admin-footer">Quicksilver Journeys · Private administration</footer>
+</body>
+</html>
