@@ -40,7 +40,9 @@ The supplied contact address is Proton Mail. Receiving enquiry notifications the
 
 ## Render free demo
 
-`render.yaml` prepares a Singapore-region Render free web service with a `/health` check, production cookies, and a generated session secret. To publish it, put this project in a Git repository you control, connect that repository to your Render account, and create a Blueprint from `render.yaml`. Enter `ADMIN_USERNAME` and a unique `ADMIN_PASSWORD` (12–72 bytes) as private values when Render requests them; do not add them to the YAML or commit them.
+`render.yaml` prepares a Singapore-region Render free web service with a `/health` check, production cookies, and Render-generated values for the session secret and admin password. To publish it, put this project in a Git repository you control, connect that repository to your Render account, and create a Blueprint from `render.yaml`. The initial admin username is `admin`; retrieve the generated password from the service's environment settings after the first deployment, then change it after signing in.
+
+If you created the Render service manually instead of creating a Blueprint, the YAML changes do not automatically configure that existing service. In the Render Dashboard, open the service's **Environment** settings and set `ADMIN_USERNAME` to `admin`, `ADMIN_PASSWORD` to a private unique password of 12-72 bytes, and `SESSION_SECRET` to a private random value of at least 32 characters. Save the changes and redeploy. Do not put any of these secret values in GitHub, `render.yaml`, or chat.
 
 This free tier is for demonstration only. The service can sleep after inactivity, and its filesystem is temporary: the CRM database, sessions and uploaded logos can be lost on restarts or redeploys. Enquiry records are retained only while that instance's local storage survives. Render's free web services block outbound SMTP ports 25, 465 and 587, so email notifications will not be delivered from this demo; the website can still record enquiries in the CRM. Use a persistent paid service/storage and a supported email delivery provider for a live business site.
 
